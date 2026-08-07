@@ -1,0 +1,116 @@
+{
+  "repo_url": "./real_target_repo",
+  "scanned_at": "2026-08-07T20:56:39.492944",
+  "components": [
+    {
+      "component_id": "werkzeug==0.14.1",
+      "name": "werkzeug",
+      "version": "0.14.1",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "pyyaml==5.3.1",
+      "name": "pyyaml",
+      "version": "5.3.1",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "gunicorn==19.9.0",
+      "name": "gunicorn",
+      "version": "19.9.0",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "urllib3==1.24.1",
+      "name": "urllib3",
+      "version": "1.24.1",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "jinja2==2.10.1",
+      "name": "jinja2",
+      "version": "2.10.1",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "requests==2.21.0",
+      "name": "requests",
+      "version": "2.21.0",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "mako==1.0.7",
+      "name": "mako",
+      "version": "1.0.7",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "flask==1.0.2",
+      "name": "flask",
+      "version": "1.0.2",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "idna==2.8",
+      "name": "idna",
+      "version": "2.8",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "certifi==2018.11.29",
+      "name": "certifi",
+      "version": "2018.11.29",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    },
+    {
+      "component_id": "python-dotenv==0.10.1",
+      "name": "python-dotenv",
+      "version": "0.10.1",
+      "ecosystem": "python",
+      "is_direct": true,
+      "depends_on": [],
+      "manifest_file": "\\requirements.txt",
+      "manifest_line": null
+    }
+  ]
+}
