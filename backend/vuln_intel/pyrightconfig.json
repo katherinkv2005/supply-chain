@@ -1,0 +1,10 @@
+{
+  "venvPath": ".",
+  "pythonPath": "",
+  "extraPaths": [
+    "src"
+  ],
+  "exclude": [
+    "output"
+  ]
+}
