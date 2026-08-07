@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinel — Autonomous Supply Chain Security</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0b0d10;
+    --panel: #12151a;
+    --panel-2: #171b21;
+    --border: #232830;
+    --text: #e8eaed;
+    --text-dim: #8b94a3;
+    --danger: #ff5c5c;
+    --danger-bg: rgba(255, 92, 92, 0.08);
+    --safe: #4ade80;
+    --safe-bg: rgba(74, 222, 128, 0.06);
+    --accent: #5eead4;
+    --warn: #fbbf24;
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  ::selection { background: var(--accent); color: #000; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 26px; height: 26px;
+    border: 1.5px solid var(--accent);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .brand-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-tag {
+    color: var(--text-dim);
+    font-size: 11.5px;
+    margin-left: 10px;
+    border-left: 1px solid var(--border);
+    padding-left: 10px;
+  }
+
+  .status-dot {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11.5px; color: var(--text-dim);
+  }
+  .status-dot::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--safe); box-shadow: 0 0 6px var(--safe);
+  }
+
+  /* ---------- SCAN BAR ---------- */
+  .scan-section {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 56px 24px 24px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    max-width: 640px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .sub {
+    color: var(--text-dim);
+    max-width: 560px;
+    font-size: 13.5px;
+    margin-bottom: 32px;
+  }
+
+  .scan-form {
+    display: flex;
+    gap: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 6px;
+  }
+
+  .scan-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13.5px;
+    padding: 12px 14px;
+  }
+
+  .scan-form input::placeholder { color: #555c68; }
+
+  .scan-form button {
+    background: var(--accent);
+    color: #05201c;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 22px;
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
+  }
+  .scan-form button:hover { opacity: 0.85; }
+  .scan-form button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .hint-row {
+    display: flex; gap: 16px; margin-top: 10px;
+    font-size: 11.5px; color: var(--text-dim);
+  }
+  .hint-row span { cursor: pointer; text-decoration: underline; text-decoration-style: dotted; }
+  .hint-row span:hover { color: var(--accent); }
+
+  /* ---------- LOADING ---------- */
+  .loading-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+    display: none;
+  }
+  .loading-wrap.active { display: block; }
+
+  .loading-box {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 24px;
+  }
+
+  .loading-steps { display: flex; flex-direction: column; gap: 10px; }
+
+  .lstep {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12.5px; color: var(--text-dim);
+    opacity: 0.4;
+  }
+  .lstep.active { opacity: 1; color: var(--text); }
+  .lstep.done { opacity: 0.7; color: var(--safe); }
+
+  .lstep .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; flex-shrink: 0;
+  }
+  .lstep.active .dot { border-color: var(--accent); }
+  .lstep.done .dot { border-color: var(--safe); background: var(--safe-bg); }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner {
+    width: 8px; height: 8px; border: 1.5px solid var(--accent);
+    border-top-color: transparent; border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  /* ---------- RESULTS ---------- */
+  .results { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; display: none; }
+  .results.active { display: block; }
+
+  .repo-line {
+    font-size: 12px; color: var(--text-dim);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .repo-line b { color: var(--text); font-weight: 500; }
+
+  /* stat cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .stat-card.critical .stat-num { color: var(--danger); }
+  .stat-card.reachable .stat-num { color: var(--danger); }
+  .stat-card.filtered .stat-num { color: var(--safe); }
+
+  /* section headers */
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin: 44px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .section-note { font-size: 11.5px; color: var(--text-dim); }
+
+  /* severity bar */
+  .sev-bar {
+    display: flex; height: 8px; border-radius: 4px; overflow: hidden;
+    margin: 14px 0 28px; border: 1px solid var(--border);
+  }
+  .sev-seg { height: 100%; }
+  .sev-legend { display: flex; gap: 18px; font-size: 11.5px; color: var(--text-dim); margin-top: -18px; margin-bottom: 24px;}
+  .sev-legend .lg { display: flex; align-items: center; gap: 6px; }
+  .lg-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* vuln cards */
+  .vuln-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+  .vuln-card.reachable { border-left-color: var(--danger); background: var(--danger-bg); }
+  .vuln-card.filtered { opacity: 0.55; }
+  .vuln-card.filtered:hover { opacity: 1; }
+
+  .vuln-top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .vuln-id { font-size: 12px; color: var(--text-dim); }
+  .vuln-pkg { font-family: var(--display); font-weight: 600; font-size: 15px; }
+  .vuln-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
+  }
+  .badge-reachable { background: var(--danger); color: #1a0000; }
+  .badge-filtered { background: var(--panel-2); color: var(--text-dim); border: 1px solid var(--border); }
+
+  .vuln-detail {
+    margin-top: 12px;
+    font-size: 12.5px;
+    display: none;
+  }
+  .vuln-card.expanded .vuln-detail { display: block; }
+
+  .diff-box {
+    font-family: var(--mono);
+    background: #0a0c0f;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 10px 0;
+    font-size: 12px;
+  }
+  .diff-remove { color: var(--danger); }
+  .diff-add { color: var(--safe); }
+
+  .evidence {
+    background: #0a0c0f;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    color: var(--accent);
+    font-size: 11.5px;
+    white-space: pre-wrap;
+  }
+
+  .explain { color: var(--text-dim); margin-top: 10px; line-height: 1.6; }
+
+  .toggle-btn {
+    background: none; border: none; color: var(--text-dim);
+    font-family: var(--mono); font-size: 11px; cursor: pointer;
+    text-decoration: underline; text-decoration-style: dotted;
+    padding: 0; margin-top: 4px;
+  }
+  .toggle-btn:hover { color: var(--accent); }
+
+  /* PR / release box */
+  .release-box {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .release-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .release-row:last-child { border-bottom: none; }
+  .release-label { color: var(--text-dim); }
+  .pr-link { color: var(--accent); text-decoration: none; }
+  .pr-link:hover { text-decoration: underline; }
+
+  .mock-note {
+    font-size: 11px; color: var(--warn); margin-top: 12px;
+    padding: 10px 12px; background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.2); border-radius: 6px;
+  }
+
+  .empty-state {
+    color: var(--text-dim); font-size: 12.5px; padding: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark">S</div>
+    <div class="brand-name">Sentinel</div>
+    <div class="brand-tag">Autonomous Supply Chain Security</div>
+  </div>
+  <div class="status-dot">backend online :8000</div>
+</header>
+
+<section class="scan-section">
+  <div class="eyebrow">// scan a repository</div>
+  <h1>Find the one vulnerability that actually matters.</h1>
+  <p class="sub">Scans a real GitHub repo, maps every dependency against known CVEs, and filters out the ones your code never touches — before generating and validating a fix for the ones that do.</p>
+
+  <form class="scan-form" id="scanForm">
+    <input type="text" id="repoUrl" placeholder="https://github.com/owner/repo" value="https://github.com/heddle317/starter-flask-app" />
+    <button type="submit" id="scanBtn">Scan Repository</button>
+  </form>
+  <div class="hint-row">
+    <span onclick="document.getElementById('repoUrl').value='https://github.com/heddle317/starter-flask-app'">use starter-flask-app</span>
+  </div>
+</section>
+
+<div class="loading-wrap" id="loadingWrap">
+  <div class="loading-box">
+    <div class="loading-steps">
+      <div class="lstep" id="ls1"><div class="dot"></div> Cloning repository</div>
+      <div class="lstep" id="ls2"><div class="dot"></div> Generating software bill of materials</div>
+      <div class="lstep" id="ls3"><div class="dot"></div> Mapping dependencies against known CVEs</div>
+      <div class="lstep" id="ls4"><div class="dot"></div> Prioritizing by severity and risk</div>
+      <div class="lstep" id="ls5"><div class="dot"></div> Checking reachability &amp; generating patches</div>
+    </div>
+  </div>
+</div>
+
+<div class="results" id="results">
+  <div class="repo-line">Scanned <b id="rRepoUrl"></b></div>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-num" id="statTotal">0</div>
+      <div class="stat-label">Dependencies flagged</div>
+    </div>
+    <div class="stat-card critical">
+      <div class="stat-num" id="statCritical">0</div>
+      <div class="stat-label">Critical / High severity</div>
+    </div>
+    <div class="stat-card reachable">
+      <div class="stat-num" id="statReachable">0</div>
+      <div class="stat-label">Genuinely exploitable</div>
+    </div>
+    <div class="stat-card filtered">
+      <div class="stat-num" id="statFiltered">0</div>
+      <div class="stat-label">Filtered as noise</div>
+    </div>
+  </div>
+
+  <div class="sev-bar" id="sevBar"></div>
+  <div class="sev-legend" id="sevLegend"></div>
+
+  <div class="section-head">
+    <div class="section-title">Exploitable — reachable in your code</div>
+    <div class="section-note" id="reachableCount"></div>
+  </div>
+  <div id="reachableList"></div>
+
+  <div class="section-head">
+    <div class="section-title">Filtered out — not reachable</div>
+    <div class="section-note" id="filteredCount"></div>
+  </div>
+  <div id="filteredList"></div>
+
+  <div class="section-head">
+    <div class="section-title">Release</div>
+    <div class="section-note">patch → validate → pull request</div>
+  </div>
+  <div class="release-box" id="releaseBox"></div>
+</div>
+
+<script>
+const API_URL = "http://127.0.0.1:8000/scan";
+
+const form = document.getElementById('scanForm');
+const btn = document.getElementById('scanBtn');
+const loadingWrap = document.getElementById('loadingWrap');
+const results = document.getElementById('results');
+
+const steps = ['ls1','ls2','ls3','ls4','ls5'];
+
+function animateSteps() {
+  let i = 0;
+  steps.forEach(id => document.getElementById(id).classList.remove('active','done'));
+  const interval = setInterval(() => {
+    if (i > 0) document.getElementById(steps[i-1]).classList.add('done');
+    if (i < steps.length) {
+      const el = document.getElementById(steps[i]);
+      el.classList.add('active');
+      el.querySelector('.dot').innerHTML = '<div class="spinner"></div>';
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 1400);
+  return interval;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const repoUrl = document.getElementById('repoUrl').value.trim();
+  if (!repoUrl) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Scanning...';
+  results.classList.remove('active');
+  loadingWrap.classList.add('active');
+  const interval = animateSteps();
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ repo_url: repoUrl })
+    });
+    const data = await res.json();
+    clearInterval(interval);
+    steps.forEach(id => {
+      document.getElementById(id).classList.add('done');
+      document.getElementById(id).classList.remove('active');
+    });
+    renderResults(data);
+  } catch (err) {
+    clearInterval(interval);
+    alert('Scan failed: ' + err.message + '\n\nMake sure the backend server is running at ' + API_URL);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Scan Repository';
+    loadingWrap.classList.remove('active');
+  }
+});
+
+function sevColor(sev) {
+  const s = (sev || '').toUpperCase();
+  if (s === 'CRITICAL') return '#ff5c5c';
+  if (s === 'HIGH') return '#ff8a5c';
+  if (s === 'MEDIUM') return '#fbbf24';
+  return '#5eead4';
+}
+
+function renderResults(data) {
+  document.getElementById('rRepoUrl').textContent = data.repo_url;
+
+  const sev = data.severity_breakdown || {};
+  const critical = (sev.CRITICAL || 0) + (sev.HIGH || 0);
+
+  document.getElementById('statTotal').textContent = data.total_vulnerabilities ?? 0;
+  document.getElementById('statCritical').textContent = critical;
+  document.getElementById('statReachable').textContent = data.reachable_count ?? 0;
+  document.getElementById('statFiltered').textContent = data.unreachable_count ?? 0;
+
+  // severity bar
+  const total = Object.values(sev).reduce((a,b)=>a+b,0) || 1;
+  const bar = document.getElementById('sevBar');
+  const legend = document.getElementById('sevLegend');
+  bar.innerHTML = '';
+  legend.innerHTML = '';
+  ['CRITICAL','HIGH','MEDIUM','LOW'].forEach(level => {
+    const count = sev[level] || 0;
+    if (!count) return;
+    const seg = document.createElement('div');
+    seg.className = 'sev-seg';
+    seg.style.width = (count/total*100) + '%';
+    seg.style.background = sevColor(level);
+    bar.appendChild(seg);
+
+    const lg = document.createElement('div');
+    lg.className = 'lg';
+    lg.innerHTML = `<div class="lg-dot" style="background:${sevColor(level)}"></div>${level} (${count})`;
+    legend.appendChild(lg);
+  });
+
+  document.getElementById('reachableCount').textContent = (data.reachable || []).length + ' found';
+  document.getElementById('filteredCount').textContent = (data.unreachable || []).length + ' filtered';
+
+  renderVulnList('reachableList', data.reachable || [], true);
+  renderVulnList('filteredList', data.unreachable || [], false);
+
+  renderRelease(data.reachable || []);
+
+  results.classList.add('active');
+  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderVulnList(containerId, list, isReachable) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+
+  if (list.length === 0) {
+    el.innerHTML = `<div class="empty-state">None ${isReachable ? 'found — clean bill of health on direct usage.' : 'filtered — every flagged CVE is reachable.'}</div>`;
+    return;
+  }
+
+  list.forEach((v, idx) => {
+    const card = document.createElement('div');
+    card.className = 'vuln-card ' + (isReachable ? 'reachable' : 'filtered');
+
+    card.innerHTML = `
+      <div class="vuln-top">
+        <div>
+          <div class="vuln-pkg">${v.package_name}</div>
+          <div class="vuln-id">${v.cve_id}</div>
+        </div>
+        <div class="vuln-badge ${isReachable ? 'badge-reachable' : 'badge-filtered'}">
+          ${isReachable ? 'Reachable' : 'Filtered — unreachable'}
+        </div>
+      </div>
+      <button class="toggle-btn">show details</button>
+      <div class="vuln-detail">
+        <div class="diff-box">
+          <div class="diff-remove">- ${v.original_content}</div>
+          <div class="diff-add">+ ${v.patched_content}</div>
+        </div>
+        <div class="explain">${v.explanation_markdown || ''}</div>
+      </div>
+    `;
+
+    const toggleBtn = card.querySelector('.toggle-btn');
+    toggleBtn.addEventListener('click', () => {
+      card.classList.toggle('expanded');
+      toggleBtn.textContent = card.classList.contains('expanded') ? 'hide details' : 'show details';
+    });
+
+    el.appendChild(card);
+  });
+}
+
+function renderRelease(reachable) {
+  const box = document.getElementById('releaseBox');
+  if (reachable.length === 0) {
+    box.innerHTML = '<div class="empty-state">No reachable vulnerabilities — nothing to patch or release.</div>';
+    return;
+  }
+
+  let rows = reachable.map(v => `
+    <div class="release-row">
+      <div>
+        <div class="release-label">${v.cve_id} — ${v.package_name}</div>
+      </div>
+      <div>
+        <a class="pr-link" href="#" onclick="return false;">fix/${v.cve_id.replace(/[:]/g,'-')} →</a>
+      </div>
+    </div>
+  `).join('');
+
+  box.innerHTML = rows + `
+    <div class="mock-note">
+      ⚠ PR creation is currently simulated for this demo. Branch, commit, and PR steps run against a mocked GitHub API — patch generation, reachability analysis, and validation are fully real.
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>

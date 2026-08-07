@@ -1,6 +1,6 @@
 {
-    "patch_id": "GHSA-m2qf-hxjv-5gpq",
+    "patch_id": "CVE-2020-14343",
     "status": "PASS",
-    "timestamp": "2026-08-08 03:40:02",
-    "test_summary": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\KATHERIN VINSON\\Desktop\\supply-chain-security\\backend\\scan_sbom\\real_target_repo\nplugins: anyio-4.14.2\ncollected 1 item\n\ntest_basic.py .                                                          [100%]\n\n============================== 1 passed in 0.61s ==============================\n"
+    "timestamp": "2026-08-08 04:34:35",
+    "test_summary": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\KATHERIN VINSON\\Desktop\\supply-chain-security\\backend\\scan_sbom\\pr_test_repo\nplugins: anyio-4.14.2\ncollected 1 item\n\ntest_basic.py .                                                          [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
 }

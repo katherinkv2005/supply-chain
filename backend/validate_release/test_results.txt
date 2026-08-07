@@ -1,9 +1,9 @@
 ============================= test session starts =============================
 platform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0
-rootdir: C:\Users\KATHERIN VINSON\Desktop\supply-chain-security\backend\scan_sbom\real_target_repo
+rootdir: C:\Users\KATHERIN VINSON\Desktop\supply-chain-security\backend\scan_sbom\pr_test_repo
 plugins: anyio-4.14.2
 collected 1 item
 
 test_basic.py .                                                          [100%]
 
-============================== 1 passed in 0.61s ==============================
+============================== 1 passed in 0.02s ==============================
