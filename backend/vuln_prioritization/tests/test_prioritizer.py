@@ -1,11 +1,4 @@
-from pathlib import Path
-import sys
-
-# Allow importing prioritizer.py
-SRC_DIR = Path(__file__).resolve().parents[1] / "src"
-sys.path.insert(0, str(SRC_DIR))
-
-from prioritizer import (
+from backend.vuln_prioritization.src.prioritizer import (
     get_severity_score,
     get_cvss_score,
     calculate_risk_score,
