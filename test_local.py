@@ -17,6 +17,15 @@ vuln = VulnerabilityItem(
 
 print("=== TESTING MODULE ===")
 res = process_vulnerability(".", vuln)
+
 print(f"CVE: {res.cve_id}")
 print(f"Is Reachable: {res.is_reachable}")
 print(f"Target File: {res.target_file}")
+print("\n--- ORIGINAL CONTENT ---")
+print(res.original_content)
+print("\n--- PATCHED CONTENT ---")
+print(res.patched_content)
+print("\n--- PATCH DIFF ---")
+print(res.patch_diff)
+print("\n--- EXPLANATION MARKDOWN ---")
+print(res.explanation_markdown)
