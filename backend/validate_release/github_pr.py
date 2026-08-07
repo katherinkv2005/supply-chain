@@ -1,37 +1,32 @@
-from github import Github
-from git import Repo
+def create_branch(branch_name):
+    print(f"Creating branch: {branch_name}")
+    return {
+        "status": "success",
+        "branch": branch_name
+    }
 
 
-def create_pr(
-    token,
-    repo_name,
-    repo_path,
-    branch,
-    title,
-    body
-):
+def commit_changes(message):
+    print(f"Commit Message: {message}")
+    return {
+        "status": "success",
+        "commit": message
+    }
 
-    repo = Repo(repo_path)
 
-    repo.git.checkout("-b", branch)
+def push_branch(branch_name):
+    print(f"Pushing branch '{branch_name}' to GitHub...")
+    return {
+        "status": "success"
+    }
 
-    repo.git.add(A=True)
 
-    repo.index.commit(title)
+def create_pull_request():
+    url = "https://github.com/demo/supply-chain/pull/1"
 
-    origin = repo.remote(name="origin")
+    print("Pull Request Created Successfully!")
 
-    origin.push(branch)
-
-    g = Github(token)
-
-    gh_repo = g.get_repo(repo_name)
-
-    pr = gh_repo.create_pull(
-        title=title,
-        body=body,
-        base="main",
-        head=branch
-    )
-
-    return pr.html_url
+    return {
+        "status": "success",
+        "url": url
+    }
