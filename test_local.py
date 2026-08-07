@@ -7,16 +7,16 @@ from backend.schemas import VulnerabilityItem
 from backend.reachability_patch.service import process_vulnerability
 
 vuln = VulnerabilityItem(
-    cve_id="CVE-2020-14343",
-    package_name="pyyaml",
-    current_version="5.3.1",
-    fixed_version="5.4",
-    severity="HIGH",
-    description="Arbitrary code execution in PyYAML load method."
+    cve_id="GHSA-xqr8-7jwr-rhp7",
+    package_name="certifi",
+    current_version="2018.11.29",
+    fixed_version="2023.7.22",
+    severity="High",
+    description="certifi vulnerability found in real scan"
 )
 
 print("=== TESTING MODULE ===")
-res = process_vulnerability(".", vuln)
+res = process_vulnerability("backend/scan_sbom/real_target_repo", vuln)
 
 print(f"CVE: {res.cve_id}")
 print(f"Is Reachable: {res.is_reachable}")
