@@ -8,3 +8,4 @@ dist/
 build/
 *.db
 .DS_Store
+backend/scan_sbom/scan_*/
