@@ -1,6 +1,6 @@
 {
-    "patch_id": "PATCH-001",
+    "patch_id": "GHSA-m2qf-hxjv-5gpq",
     "status": "PASS",
-    "timestamp": "2026-08-07 23:41:56",
-    "test_summary": "============================= test session starts =============================\nplatform win32 -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\AKSHARA\\supply-chain\\demo_repo\ncollected 1 item\n\ntest_app.py .                                                            [100%]\n\n============================== 1 passed in 0.01s ==============================\n"
+    "timestamp": "2026-08-08 03:40:02",
+    "test_summary": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\KATHERIN VINSON\\Desktop\\supply-chain-security\\backend\\scan_sbom\\real_target_repo\nplugins: anyio-4.14.2\ncollected 1 item\n\ntest_basic.py .                                                          [100%]\n\n============================== 1 passed in 0.61s ==============================\n"
 }

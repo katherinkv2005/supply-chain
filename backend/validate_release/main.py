@@ -8,67 +8,40 @@ from github_pr import (
     push_branch,
     create_pull_request
 )
+
 print("Starting Validation...\n")
 
-status = apply_patch(REPO_PATH)
+applied_patches = apply_patch(REPO_PATH)
 
-if not status:
-    print("Patch could not be applied.")
+if not applied_patches:
+    print("No reachable patches were applied. Nothing to validate or release.")
     exit()
 
-print("Patch applied successfully.\n")
+print(f"\n{len(applied_patches)} patch(es) applied successfully.\n")
 
 print("Running tests...\n")
-
 result = run_tests(REPO_PATH)
-
 print(result["stdout"])
 
-if result["passed"]:
-    print("Validation Successful")
-else:
-    print("Validation Failed")
+for patch in applied_patches:
+    patch_id = patch["cve_id"]
 
-if result["passed"]:
+    if result["passed"]:
+        print(f"Validation Successful for {patch_id}\n")
+        generate_report("PASS", patch_id, result["stdout"])
 
-    print("Validation Successful")
+        branch_name = f"fix/{patch_id.replace(':', '-')}"
+        branch = create_branch(branch_name)
+        print(branch)
 
-    generate_report(
-        "PASS",
-        "PATCH-001",
-        result["stdout"]
-    )
+        commit = commit_changes(f"Automatic Security Patch: {patch_id}")
+        print(commit)
 
-else:
+        push = push_branch(branch_name)
+        print(push)
 
-    print("Validation Failed")
-
-    generate_report(
-        "FAIL",
-        "PATCH-001",
-        result["stdout"]
-    )
-if result["passed"]:
-
-    print("Validation Successful")
-
-    print("\n------ Starting Amal's Work ------")
-
-    # Step 1: Create Branch
-    branch = create_branch("fix/PATCH-001")
-    print(branch)
-
-    # Step 2: Commit Changes
-    commit = commit_changes("Automatic Security Patch")
-    print(commit)
-
-    # Step 3: Push Branch
-    push = push_branch("fix/PATCH-001")
-    print(push)
-
-    # Step 4: Create Pull Request
-    pr = create_pull_request()
-    print(pr)
-
-else:
-    print("Validation Failed")
+        pr = create_pull_request()
+        print(pr)
+    else:
+        print(f"Validation Failed for {patch_id}")
+        generate_report("FAIL", patch_id, result["stdout"])

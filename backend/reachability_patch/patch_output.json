@@ -1,0 +1,167 @@
+[
+  {
+    "cve_id": "GHSA-887w-45rq-vxgf",
+    "package_name": "sqlalchemy",
+    "is_reachable": true,
+    "target_file": "requirements.txt",
+    "original_content": "sqlalchemy==1.0.11",
+    "patched_content": "sqlalchemy==1.3.0b3",
+    "patch_diff": "- sqlalchemy==1.0.11\n+ sqlalchemy==1.3.0b3",
+    "explanation_markdown": "Upgraded `sqlalchemy` to `1.3.0b3` to fix GHSA-887w-45rq-vxgf. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-38fc-9xqv-7f7q",
+    "package_name": "sqlalchemy",
+    "is_reachable": true,
+    "target_file": "requirements.txt",
+    "original_content": "sqlalchemy==1.0.11",
+    "patched_content": "sqlalchemy==1.2.19",
+    "patch_diff": "- sqlalchemy==1.0.11\n+ sqlalchemy==1.2.19",
+    "explanation_markdown": "Upgraded `sqlalchemy` to `1.2.19` to fix GHSA-38fc-9xqv-7f7q. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-562c-5r94-xh97",
+    "package_name": "flask",
+    "is_reachable": true,
+    "target_file": "requirements.txt",
+    "original_content": "flask==0.10.1",
+    "patched_content": "flask==0.12.3",
+    "patch_diff": "- flask==0.10.1\n+ flask==0.12.3",
+    "explanation_markdown": "Upgraded `flask` to `0.12.3` to fix GHSA-562c-5r94-xh97. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-gq9m-qvpx-68hc",
+    "package_name": "werkzeug",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "werkzeug==0.11.3",
+    "patched_content": "werkzeug==0.15.3",
+    "patch_diff": "- werkzeug==0.11.3\n+ werkzeug==0.15.3",
+    "explanation_markdown": "Upgraded `werkzeug` to `0.15.3` to fix GHSA-gq9m-qvpx-68hc. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-5wv5-4vpf-pj6m",
+    "package_name": "flask",
+    "is_reachable": true,
+    "target_file": "requirements.txt",
+    "original_content": "flask==0.10.1",
+    "patched_content": "flask==1.0",
+    "patch_diff": "- flask==0.10.1\n+ flask==1.0",
+    "explanation_markdown": "Upgraded `flask` to `1.0` to fix GHSA-5wv5-4vpf-pj6m. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-m2qf-hxjv-5gpq",
+    "package_name": "flask",
+    "is_reachable": true,
+    "target_file": "requirements.txt",
+    "original_content": "flask==0.10.1",
+    "patched_content": "flask==2.2.5",
+    "patch_diff": "- flask==0.10.1\n+ flask==2.2.5",
+    "explanation_markdown": "Upgraded `flask` to `2.2.5` to fix GHSA-m2qf-hxjv-5gpq. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-462w-v97r-4m45",
+    "package_name": "jinja2",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "jinja2==2.8",
+    "patched_content": "jinja2==2.10.1",
+    "patch_diff": "- jinja2==2.8\n+ jinja2==2.10.1",
+    "explanation_markdown": "Upgraded `jinja2` to `2.10.1` to fix GHSA-462w-v97r-4m45. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-hj2j-77xm-mc5v",
+    "package_name": "jinja2",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "jinja2==2.8",
+    "patched_content": "jinja2==2.8.1",
+    "patch_diff": "- jinja2==2.8\n+ jinja2==2.8.1",
+    "explanation_markdown": "Upgraded `jinja2` to `2.8.1` to fix GHSA-hj2j-77xm-mc5v. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-j544-7q9p-6xp8",
+    "package_name": "werkzeug",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "werkzeug==0.11.3",
+    "patched_content": "werkzeug==0.15.5",
+    "patch_diff": "- werkzeug==0.11.3\n+ werkzeug==0.15.5",
+    "explanation_markdown": "Upgraded `werkzeug` to `0.15.5` to fix GHSA-j544-7q9p-6xp8. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-2g68-c3qc-8985",
+    "package_name": "werkzeug",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "werkzeug==0.11.3",
+    "patched_content": "werkzeug==3.0.3",
+    "patch_diff": "- werkzeug==0.11.3\n+ werkzeug==3.0.3",
+    "explanation_markdown": "Upgraded `werkzeug` to `3.0.3` to fix GHSA-2g68-c3qc-8985. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-qwmp-2cf2-g9g6",
+    "package_name": "wheel",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "wheel==0.24.0",
+    "patched_content": "wheel==0.38.1",
+    "patch_diff": "- wheel==0.24.0\n+ wheel==0.38.1",
+    "explanation_markdown": "Upgraded `wheel` to `0.38.1` to fix GHSA-qwmp-2cf2-g9g6. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-xg9f-g7g7-2323",
+    "package_name": "werkzeug",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "werkzeug==0.11.3",
+    "patched_content": "werkzeug==2.2.3",
+    "patch_diff": "- werkzeug==0.11.3\n+ werkzeug==2.2.3",
+    "explanation_markdown": "Upgraded `werkzeug` to `2.2.3` to fix GHSA-xg9f-g7g7-2323. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-q2x7-8rv6-6q7h",
+    "package_name": "jinja2",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "jinja2==2.8",
+    "patched_content": "jinja2==3.1.5",
+    "patch_diff": "- jinja2==2.8\n+ jinja2==3.1.5",
+    "explanation_markdown": "Upgraded `jinja2` to `3.1.5` to fix GHSA-q2x7-8rv6-6q7h. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-g3rq-g295-4j3m",
+    "package_name": "jinja2",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "jinja2==2.8",
+    "patched_content": "jinja2==2.11.3",
+    "patch_diff": "- jinja2==2.8\n+ jinja2==2.11.3",
+    "explanation_markdown": "Upgraded `jinja2` to `2.11.3` to fix GHSA-g3rq-g295-4j3m. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  },
+  {
+    "cve_id": "GHSA-f9vj-2wh5-fj8j",
+    "package_name": "werkzeug",
+    "is_reachable": false,
+    "target_file": "requirements.txt",
+    "original_content": "werkzeug==0.11.3",
+    "patched_content": "werkzeug==3.0.6",
+    "patch_diff": "- werkzeug==0.11.3\n+ werkzeug==3.0.6",
+    "explanation_markdown": "Upgraded `werkzeug` to `3.0.6` to fix GHSA-f9vj-2wh5-fj8j. (Mode: Invalid or missing ANTHROPIC_API_KEY in .env file.)",
+    "requires_human_approval": false
+  }
+]
