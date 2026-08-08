@@ -1,37 +1,525 @@
 {
   "metadata": {
-    "scan_timestamp": "2026-08-08T00:05:10.065758+00:00",
+    "scan_timestamp": "2026-08-08T00:13:24.004275+00:00",
     "grype_version": "0.116.1",
     "grype_db_built": null,
     "sbom_source": null,
-    "total_vulnerabilities": 1,
+    "total_vulnerabilities": 25,
     "severity_summary": {
-      "CRITICAL": 1
+      "HIGH": 10,
+      "CRITICAL": 2,
+      "MEDIUM": 11,
+      "LOW": 2
     },
     "note": "dependency_type is derived from CycloneDX component scope (required=direct, optional=transitive). Reachability/exploitability analysis is NOT performed here."
   },
   "vulnerabilities": [
     {
-      "cve_id": "GHSA-8q59-q68h-6hv4",
-      "package": "pyyaml",
-      "installed_version": "5.3.1",
+      "cve_id": "GHSA-j544-7q9p-6xp8",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "High",
+      "cvss_score": 7.5,
+      "fixed_version": "0.15.5",
+      "dependency_type": "direct",
+      "description": "Pallets Werkzeug vulnerable to Path Traversal",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-14322",
+        "https://palletsprojects.com/blog/werkzeug-0-15-5-released/",
+        "http://packetstormsecurity.com/files/163398/Pallets-Werkzeug-0.15.4-Path-Traversal.html",
+        "https://github.com/advisories/GHSA-j544-7q9p-6xp8"
+      ]
+    },
+    {
+      "cve_id": "GHSA-887w-45rq-vxgf",
+      "package": "sqlalchemy",
+      "installed_version": "1.0.11",
       "severity": "Critical",
       "cvss_score": 9.8,
-      "fixed_version": "5.4",
+      "fixed_version": "1.3.0b3",
       "dependency_type": "direct",
-      "description": "Improper Input Validation in PyYAML",
+      "description": "SQLAlchemy vulnerable to SQL Injection via order_by parameter",
       "urls": [
-        "https://nvd.nist.gov/vuln/detail/CVE-2020-14343",
-        "https://github.com/yaml/pyyaml/commit/a001f2782501ad2d24986959f0239a354675f9dc",
-        "https://bugzilla.redhat.com/show_bug.cgi?id=1860466",
-        "https://github.com/yaml/pyyaml/issues/420#issuecomment-663673966",
-        "https://www.oracle.com/security-alerts/cpuapr2022.html",
-        "https://www.oracle.com/security-alerts/cpujul2022.html",
-        "https://github.com/SeldonIO/seldon-core/issues/2252",
-        "https://github.com/yaml/pyyaml/issues/420",
-        "https://github.com/pypa/advisory-database/tree/main/vulns/pyyaml/PYSEC-2021-142.yaml",
-        "https://pypi.org/project/PyYAML",
-        "https://github.com/advisories/GHSA-8q59-q68h-6hv4"
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-7164",
+        "https://github.com/sqlalchemy/sqlalchemy/issues/4481",
+        "https://access.redhat.com/errata/RHSA-2019:0981",
+        "https://access.redhat.com/errata/RHSA-2019:0984",
+        "https://lists.debian.org/debian-lts-announce/2019/03/msg00020.html",
+        "https://www.oracle.com/security-alerts/cpujan2021.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-08/msg00087.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-09/msg00010.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-09/msg00016.html",
+        "https://lists.debian.org/debian-lts-announce/2021/11/msg00005.html",
+        "https://github.com/sqlalchemy/sqlalchemy/commit/30307c4616ad67c01ddae2e1e8e34fabf6028414",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/sqlalchemy/PYSEC-2019-123.yaml",
+        "https://github.com/advisories/GHSA-887w-45rq-vxgf"
+      ]
+    },
+    {
+      "cve_id": "GHSA-562c-5r94-xh97",
+      "package": "flask",
+      "installed_version": "0.10.1",
+      "severity": "High",
+      "cvss_score": 8.7,
+      "fixed_version": "0.12.3",
+      "dependency_type": "direct",
+      "description": "Flask is vulnerable to Denial of Service via incorrect encoding of JSON data",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2018-1000656",
+        "https://github.com/pallets/flask/pull/2691",
+        "https://github.com/pallets/flask/releases/tag/0.12.3",
+        "https://lists.debian.org/debian-lts-announce/2019/08/msg00025.html",
+        "https://github.com/pallets/flask/commit/b178e89e4456e777b1a7ac6d7199052d0dfdbbbe",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/flask/PYSEC-2018-66.yaml",
+        "https://security.netapp.com/advisory/ntap-20190221-0001",
+        "https://usn.ubuntu.com/4378-1",
+        "https://github.com/advisories/GHSA-562c-5r94-xh97"
+      ]
+    },
+    {
+      "cve_id": "GHSA-462w-v97r-4m45",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "High",
+      "cvss_score": 8.6,
+      "fixed_version": "2.10.1",
+      "dependency_type": "direct",
+      "description": "Jinja2 sandbox escape via string formatting",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-10906",
+        "https://access.redhat.com/errata/RHSA-2019:1152",
+        "https://access.redhat.com/errata/RHSA-2019:1237",
+        "https://access.redhat.com/errata/RHSA-2019:1329",
+        "https://lists.apache.org/thread.html/09fc842ff444cd43d9d4c510756fec625ef8eb1175f14fd21de2605f@%3Cdevnull.infra.apache.org%3E",
+        "https://lists.apache.org/thread.html/2b52b9c8b9d6366a4f1b407a8bde6af28d9fc73fdb3b37695fd0d9ac@%3Cdevnull.infra.apache.org%3E",
+        "https://lists.apache.org/thread.html/320441dccbd9a545320f5f07306d711d4bbd31ba43dc9eebcfc602df@%3Cdevnull.infra.apache.org%3E",
+        "https://lists.apache.org/thread.html/46c055e173b52d599c648a98199972dbd6a89d2b4c4647b0500f2284@%3Cdevnull.infra.apache.org%3E",
+        "https://lists.apache.org/thread.html/57673a78c4d5c870d3f21465c7e2946b9f8285c7c57e54c2ae552f02@%3Ccommits.airflow.apache.org%3E",
+        "https://lists.apache.org/thread.html/7f39f01392d320dfb48e4901db68daeece62fd60ef20955966739993@%3Ccommits.airflow.apache.org%3E",
+        "https://lists.apache.org/thread.html/b2380d147b508bbcb90d2cad443c159e63e12555966ab4f320ee22da@%3Ccommits.airflow.apache.org%3E",
+        "https://lists.apache.org/thread.html/f0c4a03418bcfe70c539c5dbaf99c04c98da13bfa1d3266f08564316@%3Ccommits.airflow.apache.org%3E",
+        "https://palletsprojects.com/blog/jinja-2-10-1-released",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-05/msg00030.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-06/msg00064.html",
+        "https://usn.ubuntu.com/4011-2",
+        "https://usn.ubuntu.com/4011-1",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/TS7IVZAJBWOHNRDMFJDIZVFCMRP6YIUQ",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/QCDYIS254EJMBNWOG4S5QY6AOTOR4TZU",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DSW3QZMFVVR7YE3UT4YRQA272TYAL5AF",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2019-217.yaml",
+        "https://github.com/advisories/GHSA-462w-v97r-4m45"
+      ]
+    },
+    {
+      "cve_id": "GHSA-hj2j-77xm-mc5v",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "High",
+      "cvss_score": 8.6,
+      "fixed_version": "2.8.1",
+      "dependency_type": "direct",
+      "description": "Jinja2 sandbox escape vulnerability",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2016-10745",
+        "https://github.com/pallets/jinja/commit/9b53045c34e61013dc8f09b7e52a555fa16bed16",
+        "https://access.redhat.com/errata/RHSA-2019:1022",
+        "https://access.redhat.com/errata/RHSA-2019:1237",
+        "https://access.redhat.com/errata/RHSA-2019:1260",
+        "https://access.redhat.com/errata/RHSA-2019:3964",
+        "https://access.redhat.com/errata/RHSA-2019:4062",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-05/msg00030.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-06/msg00064.html",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2019-220.yaml",
+        "https://palletsprojects.com/blog/jinja-281-released",
+        "https://usn.ubuntu.com/4011-1",
+        "https://usn.ubuntu.com/4011-2",
+        "https://github.com/advisories/GHSA-hj2j-77xm-mc5v"
+      ]
+    },
+    {
+      "cve_id": "GHSA-2g68-c3qc-8985",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "High",
+      "cvss_score": 7.5,
+      "fixed_version": "3.0.3",
+      "dependency_type": "direct",
+      "description": "Werkzeug debugger vulnerable to remote execution when interacting with attacker controlled domain",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-2g68-c3qc-8985",
+        "https://github.com/pallets/werkzeug/commit/3386395b24c7371db11a5b8eaac0c91da5362692",
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-34069",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/H4SH32AM3CTPMAAEOIDAN7VU565LO4IR",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/HFERFN7PINV4MOGMGA3DPIXJPDCYOEJZ",
+        "https://security.netapp.com/advisory/ntap-20240614-0004",
+        "https://lists.debian.org/debian-lts-announce/2025/02/msg00026.html",
+        "https://github.com/advisories/GHSA-2g68-c3qc-8985"
+      ]
+    },
+    {
+      "cve_id": "GHSA-qwmp-2cf2-g9g6",
+      "package": "wheel",
+      "installed_version": "0.24.0",
+      "severity": "High",
+      "cvss_score": 7.5,
+      "fixed_version": "0.38.1",
+      "dependency_type": "direct",
+      "description": "pypa/wheel vulnerable to Regular Expression denial of service (ReDoS)",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2022-40898",
+        "https://github.com/pypa/wheel/blob/main/src/wheel/wheelfile.py#L18",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/wheel/PYSEC-2022-43017.yaml",
+        "https://pypi.org/project/wheel",
+        "https://pyup.io/posts/pyup-discovers-redos-vulnerabilities-in-top-python-packages",
+        "https://pyup.io/vulnerabilities/CVE-2022-40898/51499",
+        "https://github.com/advisories/GHSA-qwmp-2cf2-g9g6"
+      ]
+    },
+    {
+      "cve_id": "GHSA-g3rq-g295-4j3m",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "Medium",
+      "cvss_score": 6.9,
+      "fixed_version": "2.11.3",
+      "dependency_type": "direct",
+      "description": "Regular Expression Denial of Service (ReDoS) in Jinja2",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2020-28493",
+        "https://github.com/pallets/jinja/pull/1343",
+        "https://github.com/pallets/jinja/blob/ab81fd9c277900c85da0c322a2ff9d68a235b2e6/src/jinja2/utils.py%23L20",
+        "https://snyk.io/vuln/SNYK-PYTHON-JINJA2-1012994",
+        "https://security.gentoo.org/glsa/202107-19",
+        "https://github.com/pallets/jinja/commit/15ef8f09b659f9100610583938005a7a10472d4d",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/jinja2/PYSEC-2021-66.yaml",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/PVAKCOO7VBVUBM3Q6CBBTPBFNP5NDXF4",
+        "https://github.com/advisories/GHSA-g3rq-g295-4j3m"
+      ]
+    },
+    {
+      "cve_id": "GHSA-gq9m-qvpx-68hc",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "High",
+      "cvss_score": 8.7,
+      "fixed_version": "0.15.3",
+      "dependency_type": "direct",
+      "description": "Pallets Werkzeug Insufficient Entropy",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-14806",
+        "https://github.com/pallets/werkzeug/blob/7fef41b120327d3912fbe12fb64f1951496fcf3e/src/werkzeug/debug/__init__.py#L168",
+        "https://github.com/pallets/werkzeug/commit/00bc43b1672e662e5e3b8cecd79e67fc968fa246",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-09/msg00034.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-09/msg00047.html",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2019-140.yaml",
+        "https://palletsprojects.com/blog/werkzeug-0-15-3-released",
+        "https://github.com/advisories/GHSA-gq9m-qvpx-68hc"
+      ]
+    },
+    {
+      "cve_id": "GHSA-38fc-9xqv-7f7q",
+      "package": "sqlalchemy",
+      "installed_version": "1.0.11",
+      "severity": "Critical",
+      "cvss_score": 9.3,
+      "fixed_version": "1.2.19",
+      "dependency_type": "direct",
+      "description": "SQLAlchemy is vulnerable to SQL Injection via group_by parameter",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-7548",
+        "https://github.com/sqlalchemy/sqlalchemy/issues/4481#issuecomment-461204518",
+        "https://access.redhat.com/errata/RHSA-2019:0981",
+        "https://access.redhat.com/errata/RHSA-2019:0984",
+        "https://github.com/no-security/sqlalchemy_test",
+        "https://lists.debian.org/debian-lts-announce/2019/03/msg00020.html",
+        "https://www.oracle.com/security-alerts/cpujan2021.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-08/msg00087.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-09/msg00010.html",
+        "http://lists.opensuse.org/opensuse-security-announce/2019-09/msg00016.html",
+        "https://lists.debian.org/debian-lts-announce/2021/11/msg00005.html",
+        "https://github.com/sqlalchemy/sqlalchemy/issues/4510",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/sqlalchemy/PYSEC-2019-124.yaml",
+        "https://github.com/advisories/GHSA-38fc-9xqv-7f7q"
+      ]
+    },
+    {
+      "cve_id": "GHSA-5wv5-4vpf-pj6m",
+      "package": "flask",
+      "installed_version": "0.10.1",
+      "severity": "High",
+      "cvss_score": 8.7,
+      "fixed_version": "1.0",
+      "dependency_type": "direct",
+      "description": "Pallets Project Flask is vulnerable to Denial of Service via Unexpected memory usage",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2019-1010083",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/flask/PYSEC-2019-179.yaml",
+        "https://www.palletsprojects.com/blog/flask-1-0-released",
+        "https://github.com/advisories/GHSA-5wv5-4vpf-pj6m"
+      ]
+    },
+    {
+      "cve_id": "GHSA-h2fp-xgx6-xh6f",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Medium",
+      "cvss_score": 6.1,
+      "fixed_version": "0.11.11",
+      "dependency_type": "direct",
+      "description": "Pallets Werkzeug cross-site scripting vulnerability",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2016-10516",
+        "https://github.com/pallets/werkzeug/pull/1001",
+        "https://lists.debian.org/debian-lts-announce/2017/11/msg00037.html",
+        "https://github.com/pallets/werkzeug/commit/1034edc7f901dd645ec6e462754111b39002bd65",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2017-43.yaml",
+        "http://blog.neargle.com/2016/09/21/flask-src-review-get-a-xss-from-debuger",
+        "https://github.com/advisories/GHSA-h2fp-xgx6-xh6f"
+      ]
+    },
+    {
+      "cve_id": "GHSA-xg9f-g7g7-2323",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "High",
+      "cvss_score": 7.5,
+      "fixed_version": "2.2.3",
+      "dependency_type": "direct",
+      "description": "High resource usage when parsing multipart form data with many fields",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-xg9f-g7g7-2323",
+        "https://nvd.nist.gov/vuln/detail/CVE-2023-25577",
+        "https://github.com/pallets/werkzeug/commit/517cac5a804e8c4dc4ed038bb20dacd038e7a9f1",
+        "https://github.com/pallets/werkzeug/releases/tag/2.2.3",
+        "https://www.debian.org/security/2023/dsa-5470",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2023-58.yaml",
+        "https://security.netapp.com/advisory/ntap-20230818-0003",
+        "https://github.com/advisories/GHSA-xg9f-g7g7-2323"
+      ]
+    },
+    {
+      "cve_id": "GHSA-m2qf-hxjv-5gpq",
+      "package": "flask",
+      "installed_version": "0.10.1",
+      "severity": "High",
+      "cvss_score": 8.7,
+      "fixed_version": "2.2.5",
+      "dependency_type": "direct",
+      "description": "Flask vulnerable to possible disclosure of permanent session cookie due to missing Vary: Cookie header",
+      "urls": [
+        "https://github.com/pallets/flask/security/advisories/GHSA-m2qf-hxjv-5gpq",
+        "https://github.com/pallets/flask/commit/70f906c51ce49c485f1d355703e9cc3386b1cc2b",
+        "https://github.com/pallets/flask/releases/tag/2.3.2",
+        "https://github.com/pallets/flask/commit/afd63b16170b7c047f5758eb910c416511e9c965",
+        "https://nvd.nist.gov/vuln/detail/CVE-2023-30861",
+        "https://github.com/pallets/flask/releases/tag/2.2.5",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/flask/PYSEC-2023-62.yaml",
+        "https://www.debian.org/security/2023/dsa-5442",
+        "https://lists.debian.org/debian-lts-announce/2023/08/msg00024.html",
+        "https://security.netapp.com/advisory/ntap-20230818-0006",
+        "https://github.com/advisories/GHSA-m2qf-hxjv-5gpq"
+      ]
+    },
+    {
+      "cve_id": "GHSA-3p3h-qghp-hvh2",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Medium",
+      "cvss_score": 6.1,
+      "fixed_version": "0.11.6",
+      "dependency_type": "direct",
+      "description": "Open Redirect in werkzeug",
+      "urls": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2020-28724",
+        "https://github.com/pallets/flask/issues/1639",
+        "https://github.com/pallets/werkzeug/issues/822",
+        "https://github.com/pallets/werkzeug/pull/890/files",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2020-157.yaml",
+        "https://github.com/advisories/GHSA-3p3h-qghp-hvh2"
+      ]
+    },
+    {
+      "cve_id": "GHSA-h75v-3vvj-5mfj",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "Medium",
+      "cvss_score": 5.4,
+      "fixed_version": "3.1.4",
+      "dependency_type": "direct",
+      "description": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter",
+      "urls": [
+        "https://github.com/pallets/jinja/security/advisories/GHSA-h75v-3vvj-5mfj",
+        "https://github.com/pallets/jinja/commit/0668239dc6b44ef38e7a6c9f91f312fd4ca581cb",
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-34064",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/567XIGSZMABG6TSMYWD7MIYNJSUQQRUC",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/GCLF44KY43BSVMTE6S53B4V5WP3FRRSE",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/SSCBHIL6BYKR5NRCBXP4XMP2CEEKGFVS",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/ZALNWE3TXPPHVPSI3AZ5CTMSTAVN5UMS",
+        "https://lists.debian.org/debian-lts-announce/2024/12/msg00009.html",
+        "https://github.com/advisories/GHSA-h75v-3vvj-5mfj"
+      ]
+    },
+    {
+      "cve_id": "GHSA-h5c8-rqwp-cp95",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "Medium",
+      "cvss_score": 5.4,
+      "fixed_version": "3.1.3",
+      "dependency_type": "direct",
+      "description": "Jinja vulnerable to HTML attribute injection when passing user input as keys to xmlattr filter",
+      "urls": [
+        "https://github.com/pallets/jinja/security/advisories/GHSA-h5c8-rqwp-cp95",
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-22195",
+        "https://github.com/pallets/jinja/commit/716795349a41d4983a9a4771f7d883c96ea17be7",
+        "https://github.com/pallets/jinja/releases/tag/3.1.3",
+        "https://lists.debian.org/debian-lts-announce/2024/01/msg00010.html",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/5XCWZD464AJJJUBOO7CMPXQ4ROBC6JX2",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/DELCVUUYX75I5K4Q5WMJG4MUZJA6VAIP",
+        "https://lists.fedoraproject.org/archives/list/package-announce@lists.fedoraproject.org/message/O7YWRBX6JQCWC2XXCTZ55C7DPMGICCN3",
+        "https://lists.debian.org/debian-lts-announce/2024/12/msg00009.html",
+        "https://github.com/advisories/GHSA-h5c8-rqwp-cp95"
+      ]
+    },
+    {
+      "cve_id": "GHSA-f9vj-2wh5-fj8j",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Medium",
+      "cvss_score": 6.3,
+      "fixed_version": "3.0.6",
+      "dependency_type": "direct",
+      "description": "Werkzeug safe_join not safe on Windows",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-f9vj-2wh5-fj8j",
+        "https://github.com/pallets/werkzeug/commit/2767bcb10a7dd1c297d812cc5e6d11a474c1f092",
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-49766",
+        "https://github.com/pallets/werkzeug/releases/tag/3.0.6",
+        "https://security.netapp.com/advisory/ntap-20250131-0005",
+        "https://github.com/advisories/GHSA-f9vj-2wh5-fj8j"
+      ]
+    },
+    {
+      "cve_id": "GHSA-29vq-49wr-vm6x",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Medium",
+      "cvss_score": 6.3,
+      "fixed_version": "3.1.6",
+      "dependency_type": "direct",
+      "description": "Werkzeug safe_join() allows Windows special device names",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-29vq-49wr-vm6x",
+        "https://github.com/pallets/werkzeug/commit/f407712fdc60a09c2b3f4fe7db557703e5d9338d",
+        "https://github.com/pallets/werkzeug/releases/tag/3.1.6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-27199",
+        "https://github.com/advisories/GHSA-29vq-49wr-vm6x"
+      ]
+    },
+    {
+      "cve_id": "GHSA-q2x7-8rv6-6q7h",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "Medium",
+      "cvss_score": 7.8,
+      "fixed_version": "3.1.5",
+      "dependency_type": "direct",
+      "description": "Jinja has a sandbox breakout through indirect reference to format method",
+      "urls": [
+        "https://github.com/pallets/jinja/security/advisories/GHSA-q2x7-8rv6-6q7h",
+        "https://github.com/pallets/jinja/releases/tag/3.1.5",
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-56326",
+        "https://github.com/pallets/jinja/commit/48b0687e05a5466a91cd5812d604fa37ad0943b4",
+        "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html",
+        "https://github.com/advisories/GHSA-q2x7-8rv6-6q7h"
+      ]
+    },
+    {
+      "cve_id": "GHSA-hgf8-39gv-g3f2",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Medium",
+      "cvss_score": 6.3,
+      "fixed_version": "3.1.4",
+      "dependency_type": "direct",
+      "description": "Werkzeug safe_join() allows Windows special device names",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-hgf8-39gv-g3f2",
+        "https://nvd.nist.gov/vuln/detail/CVE-2025-66221",
+        "https://github.com/pallets/werkzeug/commit/4b833376a45c323a189cd11d2362bcffdb1c0c13",
+        "https://github.com/pallets/werkzeug/releases/tag/3.1.4",
+        "https://github.com/advisories/GHSA-hgf8-39gv-g3f2"
+      ]
+    },
+    {
+      "cve_id": "GHSA-cpwx-vrp4-4pq7",
+      "package": "jinja2",
+      "installed_version": "2.8",
+      "severity": "Medium",
+      "cvss_score": 5.4,
+      "fixed_version": "3.1.6",
+      "dependency_type": "direct",
+      "description": "Jinja2 vulnerable to sandbox breakout through attr filter selecting format method",
+      "urls": [
+        "https://github.com/pallets/jinja/security/advisories/GHSA-cpwx-vrp4-4pq7",
+        "https://github.com/pallets/jinja/commit/90457bbf33b8662926ae65cdde4c4c32e756e403",
+        "https://nvd.nist.gov/vuln/detail/CVE-2025-27516",
+        "https://lists.debian.org/debian-lts-announce/2025/04/msg00045.html",
+        "https://lists.debian.org/debian-lts-announce/2025/04/msg00022.html",
+        "https://github.com/advisories/GHSA-cpwx-vrp4-4pq7"
+      ]
+    },
+    {
+      "cve_id": "GHSA-87hc-h4r5-73f7",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Medium",
+      "cvss_score": 6.3,
+      "fixed_version": "3.1.5",
+      "dependency_type": "direct",
+      "description": "Werkzeug safe_join() allows Windows special device names with compound extensions",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-87hc-h4r5-73f7",
+        "https://github.com/pallets/werkzeug/commit/7ae1d254e04a0c33e241ac1cca4783ce6c875ca3",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-21860",
+        "https://github.com/advisories/GHSA-87hc-h4r5-73f7"
+      ]
+    },
+    {
+      "cve_id": "GHSA-px8h-6qxv-m22q",
+      "package": "werkzeug",
+      "installed_version": "0.11.3",
+      "severity": "Low",
+      "cvss_score": 2.6,
+      "fixed_version": "2.2.3",
+      "dependency_type": "direct",
+      "description": "Incorrect parsing of nameless cookies leads to __Host- cookies bypass",
+      "urls": [
+        "https://github.com/pallets/werkzeug/security/advisories/GHSA-px8h-6qxv-m22q",
+        "https://nvd.nist.gov/vuln/detail/CVE-2023-23934",
+        "https://github.com/pallets/werkzeug/commit/cf275f42acad1b5950c50ffe8ef58fe62cdce028",
+        "https://github.com/pallets/werkzeug/releases/tag/2.2.3",
+        "https://www.debian.org/security/2023/dsa-5470",
+        "https://github.com/pypa/advisory-database/tree/main/vulns/werkzeug/PYSEC-2023-57.yaml",
+        "https://security.netapp.com/advisory/ntap-20230818-0003",
+        "https://github.com/advisories/GHSA-px8h-6qxv-m22q"
+      ]
+    },
+    {
+      "cve_id": "GHSA-68rp-wp8r-4726",
+      "package": "flask",
+      "installed_version": "0.10.1",
+      "severity": "Low",
+      "cvss_score": 2.3,
+      "fixed_version": "3.1.3",
+      "dependency_type": "direct",
+      "description": "Flask session does not add `Vary: Cookie` header when accessed in some ways",
+      "urls": [
+        "https://github.com/pallets/flask/security/advisories/GHSA-68rp-wp8r-4726",
+        "https://github.com/pallets/flask/commit/089cb86dd22bff589a4eafb7ab8e42dc357623b4",
+        "https://github.com/pallets/flask/releases/tag/3.1.3",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-27205",
+        "https://github.com/advisories/GHSA-68rp-wp8r-4726"
       ]
     }
   ]
