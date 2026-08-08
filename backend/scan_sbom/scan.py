@@ -39,6 +39,14 @@ def scan_repo(repo_path: str) -> SBOM:
     )
 def export_cyclonedx(sbom: SBOM, output_path: str = "cyclonedx_sbom.json"):
     """Convert our SBOM object into a minimal valid CycloneDX JSON file."""
+    ECOSYSTEM_TO_PURL_TYPE = {
+        "python": "pypi",
+        "npm": "npm",
+        "javascript": "npm",
+        "go": "golang",
+        "java": "maven",
+    }
+
     cyclonedx = {
         "bomFormat": "CycloneDX",
         "specVersion": "1.4",
@@ -48,15 +56,15 @@ def export_cyclonedx(sbom: SBOM, output_path: str = "cyclonedx_sbom.json"):
                 "type": "library",
                 "name": c.name,
                 "version": c.version,
-                "purl": f"pkg:{c.ecosystem}/{c.name}@{c.version}"
+                "purl": f"pkg:{ECOSYSTEM_TO_PURL_TYPE.get(c.ecosystem, c.ecosystem)}/{c.name}@{c.version}"
             }
             for c in sbom.components
         ]
     }
     with open(output_path, "w") as f:
         json.dump(cyclonedx, f, indent=2)
+    print(f"[INFO] CycloneDX SBOM written to: {output_path}")
     return output_path
-
 if __name__ == "__main__":
     sbom = scan_repo("./real_target_repo")
     output = sbom.model_dump_json(indent=2)

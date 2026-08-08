@@ -552,7 +552,7 @@ function renderResults(data) {
   renderVulnList('reachableList', data.reachable || [], true);
   renderVulnList('filteredList', data.unreachable || [], false);
 
-  renderRelease(data.reachable || []);
+  renderRelease(data.reachable || [], data.release_results || []);
 
   results.classList.add('active');
   results.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -601,29 +601,35 @@ function renderVulnList(containerId, list, isReachable) {
   });
 }
 
-function renderRelease(reachable) {
+function renderRelease(reachable, releaseResults) {
   const box = document.getElementById('releaseBox');
   if (reachable.length === 0) {
     box.innerHTML = '<div class="empty-state">No reachable vulnerabilities — nothing to patch or release.</div>';
     return;
   }
 
-  let rows = reachable.map(v => `
-    <div class="release-row">
-      <div>
-        <div class="release-label">${v.cve_id} — ${v.package_name}</div>
-      </div>
-      <div>
-        <a class="pr-link" href="#" onclick="return false;">fix/${v.cve_id.replace(/[:]/g,'-')} →</a>
-      </div>
-    </div>
-  `).join('');
+  const resultsByCve = {};
+  (releaseResults || []).forEach(r => { resultsByCve[r.cve_id] = r; });
 
-  box.innerHTML = rows + `
-    <div class="mock-note">
-      ⚠ PR creation is currently simulated for this demo. Branch, commit, and PR steps run against a mocked GitHub API — patch generation, reachability analysis, and validation are fully real.
-    </div>
-  `;
+  let rows = reachable.map(v => {
+    const r = resultsByCve[v.cve_id];
+    const linkHtml = (r && r.pr_url)
+      ? `<a class="pr-link" href="${r.pr_url}" target="_blank">View pull request →</a>`
+      : `<span class="release-label" style="opacity:0.5">not opened on this repo</span>`;
+    return `
+      <div class="release-row">
+        <div class="release-label">${v.cve_id} — ${v.package_name}</div>
+        <div>${linkHtml}</div>
+      </div>
+    `;
+  }).join('');
+
+  const anyReal = (releaseResults || []).some(r => r.pr_url);
+  const note = anyReal
+    ? `<div class="mock-note" style="border-color: rgba(74,222,128,0.3); color: var(--safe); background: rgba(74,222,128,0.06);">✓ Real pull request(s) opened via the GitHub API.</div>`
+    : `<div class="mock-note">PR creation only runs against the repo configured for release. See backend .env / GITHUB_REPO.</div>`;
+
+  box.innerHTML = rows + note;
 }
 </script>
 

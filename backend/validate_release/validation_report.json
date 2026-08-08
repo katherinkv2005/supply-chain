@@ -1,6 +1,6 @@
 {
-    "patch_id": "CVE-2020-14343",
+    "patch_id": "GHSA-8q59-q68h-6hv4",
     "status": "PASS",
-    "timestamp": "2026-08-08 04:34:35",
-    "test_summary": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\KATHERIN VINSON\\Desktop\\supply-chain-security\\backend\\scan_sbom\\pr_test_repo\nplugins: anyio-4.14.2\ncollected 1 item\n\ntest_basic.py .                                                          [100%]\n\n============================== 1 passed in 0.02s ==============================\n"
+    "timestamp": "2026-08-08 05:24:06",
+    "test_summary": "============================= test session starts =============================\nplatform win32 -- Python 3.11.9, pytest-9.1.1, pluggy-1.6.0\nrootdir: C:\\Users\\KATHERIN VINSON\\Desktop\\supply-chain-security\\backend\\scan_sbom\\pr_test_repo\nplugins: anyio-4.14.2\ncollected 1 item\n\ntest_basic.py .                                                          [100%]\n\n============================== 1 passed in 0.08s ==============================\n"
 }

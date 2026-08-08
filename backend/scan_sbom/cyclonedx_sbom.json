@@ -5,33 +5,9 @@
   "components": [
     {
       "type": "library",
-      "name": "cryptography",
-      "version": "1.1.1",
-      "purl": "pkg:python/cryptography@1.1.1"
-    },
-    {
-      "type": "library",
-      "name": "sqlalchemy",
-      "version": "1.0.9",
-      "purl": "pkg:python/sqlalchemy@1.0.9"
-    },
-    {
-      "type": "library",
-      "name": "flask",
-      "version": "0.10.1",
-      "purl": "pkg:python/flask@0.10.1"
-    },
-    {
-      "type": "library",
-      "name": "gunicorn",
-      "version": "19.4.1",
-      "purl": "pkg:python/gunicorn@19.4.1"
-    },
-    {
-      "type": "library",
-      "name": "flask-security",
-      "version": "1.7.5",
-      "purl": "pkg:python/flask-security@1.7.5"
+      "name": "pyyaml",
+      "version": "5.3.1",
+      "purl": "pkg:pypi/pyyaml@5.3.1"
     }
   ]
 }
